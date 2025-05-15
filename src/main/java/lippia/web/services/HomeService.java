@@ -66,6 +66,7 @@ public class HomeService {
                 throw new IllegalArgumentException("Unrecognized title: " + titleName);
 
         }
+
         Assert.assertTrue(WebActionManager.isEnabled( HomeConstants.ADD_TO_BASKET_BUTTON ));
         //si no anda isEnabled entonces usar isVisible dependiendo si el boton esta roto o no
     }
