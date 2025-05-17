@@ -1,6 +1,5 @@
 package lippia.web.services;
 
-import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.WebActionManager;
 import lippia.web.constants.HomeConstants;
 import org.testng.Assert;
@@ -10,24 +9,12 @@ import static lippia.web.constants.HomeConstants.*;
 
 public class HomeService {
 
-    public static void navigateTo() {
-        WebActionManager.navigateTo(PropertyManager.getProperty("web.base.url"));
-    }
-
     public static void checkSliders(int qSliders) {
-            Assert.assertTrue(WebActionManager.getElements(HomeConstants.CONTAINER_SLIDERS).size() == qSliders);
-        }
+        Assert.assertTrue(WebActionManager.getElements(HomeConstants.CONTAINER_SLIDERS).size() == qSliders);
+    }
 
     public static void checkArrivals(int qArrivals) {
         Assert.assertTrue(WebActionManager.getElements(HomeConstants.CONTAINER_ARRIVALS).size() == qArrivals);
-    }
-
-    public static void clickShopMenu() {
-        WebActionManager.click( SHOP_MENU_BUTTON );
-    }
-
-    public static void clickHomeMenu() {
-        WebActionManager.click( HOME_MENU_BUTTON );
     }
 
     public static void clickArrivalImage(String imageName) {
@@ -48,7 +35,6 @@ public class HomeService {
     }
 
     public static void verifyPage(String titleName) {
-
         switch (titleName) {
             case "Selenium Ruby":
                 String title1 = WebActionManager.getText( HomeConstants.SELENIUM_RUBY_TITLE );
@@ -64,7 +50,6 @@ public class HomeService {
                 break;
             default:
                 throw new IllegalArgumentException("Unrecognized title: " + titleName);
-
         }
 
         Assert.assertTrue(WebActionManager.isEnabled( HomeConstants.ADD_TO_BASKET_BUTTON ));

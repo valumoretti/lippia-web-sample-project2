@@ -1,4 +1,4 @@
-@home
+@home @regression
 Feature: Home
 
     Background:
@@ -19,17 +19,17 @@ Feature: Home
     And the client clicks on <imageName> image in the Arrivals section
     Then the client can verify that it navigates to a page where the book <imageName> can be added to the basket
 
-    @arrival1Navigation
+    @seleniumArrivalNavigation
     Examples:
       | imageName             |
       | Selenium Ruby         |
 
-    @arrival2Navigation
+    @htmlArrivalNavigation
     Examples:
       | imageName             |
       | Thinking in HTML      |
 
-    @arrival3Navigation
+    @javaScriptArrivalNavigation
     Examples:
       | imageName             |
       | Mastering JavaScript  |
