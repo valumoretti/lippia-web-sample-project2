@@ -1,10 +1,16 @@
 package lippia.web.services;
 
+import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 
+
 public class CommonService {
+
+    public static void navigateTo() {
+        WebActionManager.navigateTo(PropertyManager.getProperty("web.base.url"));
+    }
 
     public static void scrollIntoView(String locator) {
         WebElement scrollLocator = WebActionManager.getElement(locator);
