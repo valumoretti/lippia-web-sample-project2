@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lippia.web.services.LoginService;
+import lippia.web.services.MyAccountService;
 import lippia.web.services.SuperiorBarNavigationBarService;
 
 public class LoginSteps extends PageSteps {
@@ -32,5 +33,10 @@ public class LoginSteps extends PageSteps {
     @Then("^the error message \"(.*)\" should be displayed$")
     public void errorMessageShouldBeDisplayed(String errorMessage) {
         LoginService.checkLoginErrorMessage(errorMessage);
+    }
+
+    @Then("the client should see the My Account dashboard")
+    public void verifyMyAccountDashboardIsVisible() {
+        MyAccountService.verifyMyAccountDashboard();
     }
 }

@@ -18,4 +18,8 @@ public class SuperiorBarNavigationBarService extends ActionManager {
     public static void clickHomeMenu() {
         WebActionManager.click( HOME_MENU_BUTTON );
     }
+
+    public static void clickItemLink() {
+        WebActionManager.click(ITEM_LINK);
+    }
 }

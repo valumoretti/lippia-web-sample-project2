@@ -17,4 +17,5 @@ public class CommonService {
         DriverManager.getDriverInstance().executeScript("arguments[0].scrollIntoView({block: 'center'});", scrollLocator);
 
     }
+
 }

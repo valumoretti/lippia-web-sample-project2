@@ -26,4 +26,5 @@ public class LoginService {
         String actualMessage = WebActionManager.getText(LOGIN_ERROR_MESSAGE);
         Assert.assertEquals(actualMessage, errorMessage, "The error message does not match.");
     }
+
 }

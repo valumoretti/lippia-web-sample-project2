@@ -53,7 +53,11 @@ public class HomeService {
         }
 
         Assert.assertTrue(WebActionManager.isEnabled( HomeConstants.ADD_TO_BASKET_BUTTON ));
-        //si no anda isEnabled entonces usar isVisible dependiendo si el boton esta roto o no
     }
+
+    public static void clickBasketButton() {
+        WebActionManager.click(ADD_TO_BASKET_BUTTON);
+    }
+
 }
 
