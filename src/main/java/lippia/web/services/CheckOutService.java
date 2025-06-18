@@ -22,6 +22,8 @@ public class CheckOutService {
         String subtotalText = WebActionManager.getText("//tr[td[contains(text(),'Subtotal')]]/td[2]");
         String totalText = WebActionManager.getText("//tr[td[contains(text(),'Total')]]/td[2]");
 
+//revisar esto, quizas estos son los xpath que me estan fallando! los de aca arriba
+
         double subtotal = Double.parseDouble(subtotalText.replace("₹", "").trim());
         double total = Double.parseDouble(totalText.replace("₹", "").trim());
 

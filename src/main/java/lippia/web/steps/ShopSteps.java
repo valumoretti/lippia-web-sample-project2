@@ -16,5 +16,4 @@ public class ShopSteps extends PageSteps {
     public void checkCategoryProducts(String categoryName) {
         ShopService.checkCategoryProducts(categoryName);
     }
-
 }
