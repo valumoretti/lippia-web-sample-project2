@@ -2,7 +2,7 @@ package lippia.web.constants;
 
 public class HomeConstants {
 
-    public static final String CONTAINER_SLIDERS = "xpath://*[@id=\"n2-ss-6\"]/div[1]/div/div/div";
+    public static final String CONTAINER_SLIDERS = "xpath://*[@id='n2-ss-6']/div[1]/div/div/div";
     public static final String CONTAINER_ARRIVALS = "xpath://*[contains(@id,'text-22-sub_row_1-0-2')]";
     public static final String SELENIUM_RUBY_IMAGE = "xpath://a[contains(@href, 'selenium-ruby')]";
     public static final String THINKING_IN_HTML_IMAGE = "xpath://a[contains(@href, 'thinking-in-html')]";

@@ -35,7 +35,66 @@ public class CheckOutService {
         Assert.assertTrue(WebActionManager.isVisible(PAYPAL_LABEL), "PayPal Express Checkout not visible");
     }
 
-    public static void enterFirstNameTextbox() {
+    public static void enterFirstName(String firstName) {
+        WebActionManager.setInput(FIRST_NAME_INPUT, firstName);
+    }
 
+    public static void enterLastName(String lastName) {
+        WebActionManager.setInput(LAST_NAME_INPUT, lastName);
+    }
+
+    public static void enterEmailAddress(String email) {
+        WebActionManager.setInput(EMAIL_INPUT, email);
+    }
+
+    public static void enterPhoneNumber(String phoneNumber) {
+        WebActionManager.setInput(PHONE_NUMBER_INPUT, phoneNumber);
+    }
+
+    public static void selectCountry(String country) {
+        WebActionManager.click("xpath://div[@id='s2id_billing_country']/a");
+        WebActionManager.setInput("xpath://input[contains(@class,'select2-input')]", country);
+        WebActionManager.click("xpath://input[contains(@class,'select2-input')]");
+    }
+
+    public static void enterAddress(String address) {
+        WebActionManager.setInput(ADDRESS_INPUT, address);
+    }
+
+    public static void enterState(String state) {
+        WebActionManager.setDropdownByVisibleText(STATE_DROPDOWN, state);
+    }
+
+    public static void enterPostcode(String postcode) {
+        WebActionManager.setInput(POSTCODE_INPUT, postcode);
+    }
+
+    public static void selectPayment(String paymentMethod) {
+        switch (paymentMethod.trim().toLowerCase()) {
+            case "direct bank transfer":
+                WebActionManager.click(BANK_TRANSFER_RADIO);
+                break;
+            case "check payments":
+                WebActionManager.click(CHEQUE_RADIO);
+                break;
+            case "cash on delivery":
+                WebActionManager.click(CASH_RADIO);
+                break;
+            case "paypal express checkout":
+                WebActionManager.click(PAYPAL_RADIO);
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported payment method: " + paymentMethod);
+        }
+    }
+
+    public static void clickPlaceOrderButton() {
+        WebActionManager.click(PLACE_ORDER_BUTTON);
+    }
+
+    public static void checkOrderReceived() {
+        Assert.assertTrue(
+                WebActionManager.isVisible(ORDER_RECEIVED_LABEL), "The order confirmation message is not visible."
+        );
     }
 }

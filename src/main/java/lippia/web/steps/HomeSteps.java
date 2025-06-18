@@ -1,6 +1,7 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
+import com.sun.tools.javac.comp.Check;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lippia.web.services.BasketService;
@@ -66,7 +67,57 @@ public class HomeSteps extends PageSteps {
     }
 
     @And("^the client enters \"(.*)\" in the First Name textbox$")
-    public void enterFirstNameTextbox(String arg0) {
-        CheckOutService.enterFirstNameTextbox();
+    public void enterFirstNameTextbox(String firstName) {
+        CheckOutService.enterFirstName(firstName);
+    }
+
+    @And("^the client enters \"(.*)\" in the Last Name textbox$")
+    public void enterInTheLastNameTextbox(String lastName) {
+        CheckOutService.enterLastName(lastName);
+    }
+
+    @And("^the client enters \"(.*)\" in the Email Address textbox$")
+    public void enterInTheEmailAddressTextbox(String email) {
+        CheckOutService.enterEmailAddress(email);
+    }
+
+    @And("^the client enters \"(.*)\" in the Phone textbox$")
+    public void enterInThePhoneTextbox(String phoneNumber) {
+        CheckOutService.enterPhoneNumber(phoneNumber);
+    }
+
+    @And("^the client selects \"(.*)\" in the Country section$")
+    public void selectInTheCountrySection(String country) {
+        CheckOutService.selectCountry(country);
+    }
+
+    @And("^the client enters \"(.*)\" in the Address textbox$")
+    public void enterInTheAddressTextbox(String address) {
+        CheckOutService.enterAddress(address);
+    }
+
+    @And("^the client enters \"(.*)\" in the State textbox$")
+    public void enterInTheStateCountryTextbox(String state) {
+        CheckOutService.enterState(state);
+    }
+
+    @And("^the client enters \"(.*)\" in the Postcode or ZIP textbox$")
+    public void enterInThePostcodeZIPTextbox(String postcode) {
+        CheckOutService.enterPostcode(postcode);
+    }
+
+    @And("the client selects (.*) in the payment gateway")
+    public void selectPaymentInThePaymentGateway(String paymentMethod) {
+        CheckOutService.selectPayment(paymentMethod);
+    }
+
+    @And("the client clicks on Place Order button")
+    public void clickOnPlaceOrderButton() {
+        CheckOutService.clickPlaceOrderButton();
+    }
+
+    @Then("the client can check that the order has been received")
+    public void checkThatTheOrderHasBeenReceived() {
+        CheckOutService.checkOrderReceived();
     }
 }
