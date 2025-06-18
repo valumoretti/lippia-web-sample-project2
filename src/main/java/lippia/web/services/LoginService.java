@@ -1,8 +1,9 @@
 package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
-import junit.framework.Assert;
+
 import lippia.web.constants.LoginConstants;
+import org.testng.Assert;
 
 import static lippia.web.constants.LoginConstants.*;
 
@@ -27,4 +28,18 @@ public class LoginService {
         Assert.assertEquals(actualMessage, errorMessage, "The error message does not match.");
     }
 
+    public static void enterCaseChangedUsername(String usernameCaseChanged) {
+        WebActionManager.setInput(USERNAME_INPUT, usernameCaseChanged);
+    }
+
+    public static void enterCaseChangedPassword(String passwordCaseChanged) {
+        WebActionManager.setInput(PASSWORD_INPUT, passwordCaseChanged);
+    }
+
+    public static void checkLoginFail() {
+        Assert.assertTrue(
+                WebActionManager.isVisible(PASSWORD_INCORRECT_MESSAGE),
+                "Expected error message 'is incorrect' is not visible."
+        );
+    }
 }

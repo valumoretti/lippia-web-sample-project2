@@ -34,3 +34,11 @@ Feature: Login
     Examples:
       | credentialConditions                | username                     | password          | errorMessage                 |
       | empty username and empty password   |                              |                   | Error: Username is required  |
+
+  @LoginFailWithCaseChanged
+  Scenario: Verify login fail with case changed username and password
+    When the client clicks on the My Account menu
+    And the client enters the case changed username "VALUMORETTIARIAS@GMAIL.COM" in the username textbox
+    And the client enters the case changed password "CONTRASENIASEGURA" in the password textbox
+    And the client clicks on the Login button
+    Then login must fail saying incorrect username-password

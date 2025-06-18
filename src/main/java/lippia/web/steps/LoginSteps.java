@@ -39,4 +39,20 @@ public class LoginSteps extends PageSteps {
     public void verifyMyAccountDashboardIsVisible() {
         MyAccountService.verifyMyAccountDashboard();
     }
+
+    @And("^the client enters the case changed username \"(.*)\" in the username textbox$")
+    public void enterCaseChangedUsername(String usernameCaseChanged) {
+        LoginService.enterCaseChangedUsername(usernameCaseChanged);
+    }
+
+    @And("^the client enters the case changed password \"(.*)\" in the password textbox$")
+    public void enterCaseChangedPassword(String passwordCaseChanged) {
+        LoginService.enterCaseChangedPassword(passwordCaseChanged);
+    }
+
+    @Then("login must fail saying incorrect username-password")
+    public void checkLoginMustFail() {
+        LoginService.checkLoginFail();
+    }
+
 }
