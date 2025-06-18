@@ -4,6 +4,7 @@ import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lippia.web.services.CommonService;
 import lippia.web.services.LoginService;
 import lippia.web.services.MyAccountService;
 import lippia.web.services.SuperiorBarNavigationBarService;
@@ -15,13 +16,13 @@ public class LoginSteps extends PageSteps {
         SuperiorBarNavigationBarService.clickMyAccountMenu();
     }
 
-    @And("^the client enters \"(.*)\" in the username textbox$")
-    public void enterUsername(String username) {
+    @And("^the client enters registered username \"(.*)\" in the username textbox$")
+    public void enterValidUsername(String username) {
         LoginService.enterUsername(username);
     }
 
-    @And("^the client enters \"(.*)\" in the password textbox$")
-    public void enterPasswordTextbox(String password) {
+    @And("^the client enters valid password \"(.*)\" in the password textbox$")
+    public void enterValidPassword(String password) {
         LoginService.enterPassword(password);
     }
 
@@ -55,4 +56,18 @@ public class LoginSteps extends PageSteps {
         LoginService.checkLoginFail();
     }
 
+    @And("the client clicks on Sign out")
+    public void clickSignOut() {
+        MyAccountService.clickSignOut();
+    }
+
+    @And("the client presses back button")
+    public void pressBackButton() {
+        CommonService.pressBackButton();
+    }
+
+    @Then("the client shouldn't be signed in to his account")
+    public void checkClientShouldntBeSigned() {
+        LoginService.checkClientShouldntBeSigned();
+    }
 }

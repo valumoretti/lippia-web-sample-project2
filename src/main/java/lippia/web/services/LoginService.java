@@ -6,6 +6,7 @@ import lippia.web.constants.LoginConstants;
 import org.testng.Assert;
 
 import static lippia.web.constants.LoginConstants.*;
+import static lippia.web.constants.MyAccountConstants.HELLO_LABEL;
 
 public class LoginService {
 
@@ -40,6 +41,17 @@ public class LoginService {
         Assert.assertTrue(
                 WebActionManager.isVisible(PASSWORD_INCORRECT_MESSAGE),
                 "Expected error message 'is incorrect' is not visible."
+        );
+    }
+
+    public static void checkClientShouldntBeSigned() {
+        Assert.assertTrue(
+                WebActionManager.isVisible(LOGIN_BUTTON),
+                "Expected login button is not visible"
+        );
+        Assert.assertFalse(
+                WebActionManager.isPresent(HELLO_LABEL),
+                "Login confirmation message is still visible; user may still be logged in."
         );
     }
 }

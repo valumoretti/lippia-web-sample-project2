@@ -18,4 +18,7 @@ public class CommonService {
 
     }
 
+    public static void pressBackButton() {
+        DriverManager.getDriverInstance().navigate().back();
+    }
 }

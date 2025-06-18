@@ -3,5 +3,6 @@ package lippia.web.constants;
 public class MyAccountConstants {
 
     public static final String DASHBOARD_LINK = "xpath://a[text()='Dashboard']";
-
+    public static final String SIGN_OUT_LINK = "xpath://a[text()='Sign out']";
+    public static final String HELLO_LABEL = "xpath://p[starts-with(normalize-space(.), 'Hello')]\n";
 }
