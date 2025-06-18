@@ -22,4 +22,5 @@ public class SuperiorBarNavigationBarService extends ActionManager {
     public static void clickItemLink() {
         WebActionManager.click(ITEM_LINK);
     }
+
 }

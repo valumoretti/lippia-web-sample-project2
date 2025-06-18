@@ -11,11 +11,6 @@ import lippia.web.services.SuperiorBarNavigationBarService;
 
 public class LoginSteps extends PageSteps {
 
-    @When("the client clicks on the My Account menu")
-    public void clickOnMyAccountMenu() {
-        SuperiorBarNavigationBarService.clickMyAccountMenu();
-    }
-
     @And("^the client enters registered username \"(.*)\" in the username textbox$")
     public void enterValidUsername(String username) {
         LoginService.enterUsername(username);

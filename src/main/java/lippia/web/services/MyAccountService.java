@@ -20,4 +20,15 @@ public class MyAccountService {
         );
         WebActionManager.click(SIGN_OUT_LINK);
     }
+
+    public static void clickOnAccountDetails() {
+        WebActionManager.click(ACCOUNT_DETAILS_LINK);
+    }
+
+    public static void checkAccountDetails() {
+        Assert.assertTrue(
+                WebActionManager.isVisible(PASSWORD_CHANGE_LABEL),
+                "The 'Password Change' section is not visible."
+        );
+    }
 }

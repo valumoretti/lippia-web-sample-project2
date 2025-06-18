@@ -14,6 +14,11 @@ public class CommonSteps extends PageSteps {
         CommonService.navigateTo();
     }
 
+    @When("the client clicks on the My Account menu")
+    public void clickOnMyAccountMenu() {
+        SuperiorBarNavigationBarService.clickMyAccountMenu();
+    }
+
     @When("the client clicks on the Shop menu")
     public void clickOnTheShopMenu() {
         SuperiorBarNavigationBarService.clickShopMenu();
