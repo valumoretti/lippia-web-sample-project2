@@ -5,7 +5,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import lippia.web.services.CheckOutService;
 import lippia.web.services.ShopService;
-import org.testng.Assert;
 
 public class ShopSteps extends PageSteps {
 

@@ -3,11 +3,9 @@ package lippia.web.steps;
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import lippia.web.services.CommonService;
 import lippia.web.services.LoginService;
 import lippia.web.services.MyAccountService;
-import lippia.web.services.SuperiorBarNavigationBarService;
 
 public class LoginSteps extends PageSteps {
 
