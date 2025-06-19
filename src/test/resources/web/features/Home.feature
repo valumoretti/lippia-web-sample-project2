@@ -1,8 +1,8 @@
 @home @regression
 Feature: Home
 
-    Background:
-      Given The client is in landing page
+  Background:
+    Given The client is in landing page
 
   @only3Sliders
   Scenario: Verifying landing page has only '3' sliders
@@ -34,7 +34,7 @@ Feature: Home
       | imageName             |
       | Mastering JavaScript  |
 
-  @navigateToPaymentPage
+  @navigateFromHomeToPaymentPage @trabajoFinal
   Scenario: Verify that user can navigate to Check Out-Billing Details page
     When the client clicks on the Shop menu
     And the client clicks on the Home menu
@@ -47,7 +47,7 @@ Feature: Home
     And the client can see order details where total is greater than subtotal
     And the client can opt any payment like direct bank transfer, check, cash or PayPal
 
-  @navigateToOrderConfirmationPage
+  @navigateFromHomeToOrderConfirmationPage @trabajoFinal
   Scenario Outline: Verify that user can navigate to Check Out-Order Confirmation page
     When the client clicks on the Shop menu
     And the client clicks on the Home menu
@@ -61,7 +61,8 @@ Feature: Home
     And the client enters "12345678" in the Phone textbox
     And the client selects "Argentina" in the Country section
     And the client enters "9 de julio 123" in the Address textbox
-    And the client enters "Mendoza" in the State textbox
+    And the client enters "Mendoza" in the city textbox
+    And the client enters "Mendoza" in the State section
     And the client enters "555" in the Postcode or ZIP textbox
     And the client selects <paymentMethod> in the payment gateway
     And the client clicks on Place Order button

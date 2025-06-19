@@ -15,4 +15,10 @@ public class MyAccountSteps {
     public void checkAccountDetails() {
         MyAccountService.checkAccountDetails();
     }
+
+    @And("the client clicks on Logout button")
+    public void clickOnLogoutButton() {
+        MyAccountService.clickOnLogoutButton();
+    }
+
 }

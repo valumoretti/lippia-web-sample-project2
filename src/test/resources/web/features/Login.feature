@@ -35,7 +35,7 @@ Feature: Login
       | credentialConditions                | username                     | password          | errorMessage                 |
       | empty username and empty password   |                              |                   | Error: Username is required  |
 
-  @loginFailWithCaseChanged
+  @loginFailWithCaseChanged @trabajoFinal
   Scenario: Verify login fail with case changed username and password
     When the client clicks on the My Account menu
     And the client enters the case changed username "VALUMORETTIARIAS@GMAIL.COM" in the username textbox
@@ -43,7 +43,7 @@ Feature: Login
     And the client clicks on the Login button
     Then login must fail saying incorrect username-password
 
-  @loginWithCaseChangedUsername
+  @loginWithCaseChangedUsername @trabajoFinal
   Scenario: Verify login with case changed username
     When the client clicks on the My Account menu
     And the client enters the case changed username "VALUMORETTIARIAS@GMAIL.COM" in the username textbox

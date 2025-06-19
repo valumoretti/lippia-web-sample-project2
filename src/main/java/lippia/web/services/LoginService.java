@@ -44,14 +44,4 @@ public class LoginService {
         );
     }
 
-    public static void checkClientShouldntBeSigned() {
-        Assert.assertTrue(
-                WebActionManager.isVisible(LOGIN_BUTTON),
-                "Expected login button is not visible"
-        );
-        Assert.assertFalse(
-                WebActionManager.isPresent(HELLO_LABEL),
-                "Login confirmation message is still visible; user may still be logged in."
-        );
-    }
 }

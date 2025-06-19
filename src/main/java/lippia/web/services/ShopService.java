@@ -1,9 +1,10 @@
 package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
-import junit.framework.Assert;
+
 import lippia.web.constants.ShopConstants;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class ShopService {
     private static void validateProductCategory(String categoryClassSuffix) {
         List<WebElement> products = WebActionManager.getElements(ShopConstants.PRODUCTS_LIST);
         int productCount = products.size();
-        Assert.assertTrue("No visible products", productCount > 0);
+        Assert.assertTrue(productCount > 0, "No visible products");
 
         String expectedClass = "product_cat-" + categoryClassSuffix;
         int validCount = 0;
@@ -71,8 +72,21 @@ public class ShopService {
             }
         }
 
-        Assert.assertEquals("Not all products have the expected class '" + expectedClass + "'",
+        Assert.assertEquals(
+                validCount,
                 productCount,
-                validCount);
+                "Not all products have the expected class '" + expectedClass + "'"
+        );
+    }
+
+    public static void clickAddToBasketButtonFromShop() {
+        WebActionManager.click(ADD_TO_BASKET_BUTTON_FROM_SHOP);
+        String priceBookText = WebActionManager.getText(PRICE_BOOK_LABEL);
+        String priceItemText = WebActionManager.getText(PRICE_ITEM_LABEL);
+
+        double priceBook = Double.parseDouble(priceBookText.replace("₹", "").trim());
+        double priceItem = Double.parseDouble(priceItemText.replace("₹", "").trim());
+
+        Assert.assertEquals(priceBook, priceItem, "The price book is not the same as the price item. Price book: " + priceBook + ", price item: " + priceItem);
     }
 }

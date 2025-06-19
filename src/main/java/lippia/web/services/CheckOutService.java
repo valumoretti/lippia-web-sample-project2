@@ -19,10 +19,8 @@ public class CheckOutService {
     }
 
     public static void checkTotalAndSubtotal() {
-        String subtotalText = WebActionManager.getText("//tr[td[contains(text(),'Subtotal')]]/td[2]");
-        String totalText = WebActionManager.getText("//tr[td[contains(text(),'Total')]]/td[2]");
-
-//revisar esto, quizas estos son los xpath que me estan fallando! los de aca arriba
+        String subtotalText = WebActionManager.getText(CHECKOUT_SUBTOTAL_AMOUNT_LABEL);
+        String totalText = WebActionManager.getText(CHECKOUT_TOTAL_AMOUNT_LABEL);
 
         double subtotal = Double.parseDouble(subtotalText.replace("₹", "").trim());
         double total = Double.parseDouble(totalText.replace("₹", "").trim());
@@ -54,13 +52,41 @@ public class CheckOutService {
     }
 
     public static void selectCountry(String country) {
-        WebActionManager.click("xpath://div[@id='s2id_billing_country']/a");
-        WebActionManager.setInput("xpath://input[contains(@class,'select2-input')]", country);
-        WebActionManager.click("xpath://input[contains(@class,'select2-input')]");
+        WebActionManager.click(COUNTRY_DROPDOWN_1);
+        WebActionManager.setInput(COUNTRY_DROPDOWN_2, country);
+        WebActionManager.click(COUNTRY_DROPDOWN_2);
+
+        String subtotalText = WebActionManager.getText(CHECKOUT_SUBTOTAL_AMOUNT_LABEL);
+        String taxText = WebActionManager.getText(CHECKOUT_TAX_AMOUNT_LABEL);
+        String totalText = WebActionManager.getText(CHECKOUT_TOTAL_AMOUNT_LABEL);
+
+        double subtotal = Double.parseDouble(subtotalText.replace("₹", "").trim());
+        double tax = Double.parseDouble(taxText.replace("₹", "").trim());
+        double total = Double.parseDouble(totalText.replace("₹", "").trim());
+
+        double expectedTax = subtotal * 0.05;
+        Assert.assertEquals(
+                tax,
+                expectedTax,
+                0.01,
+                "Tax is not 5% of the subtotal. Expected: " + expectedTax + ", but got: " + tax
+        );
+        double expectedTotal = subtotal + tax;
+        Assert.assertEquals(
+                total,
+                expectedTotal,
+                0.01,
+                "Subtotal + Tax does not equal Total. Subtotal: " + subtotal + ", Tax: " + tax + ", Total: " + total
+        );
+
     }
 
     public static void enterAddress(String address) {
         WebActionManager.setInput(ADDRESS_INPUT, address);
+    }
+
+    public static void enterCity(String city) {
+        WebActionManager.setInput(CITY_INPUT, city);
     }
 
     public static void enterState(String state) {
@@ -97,6 +123,46 @@ public class CheckOutService {
     public static void checkOrderReceived() {
         Assert.assertTrue(
                 WebActionManager.isVisible(ORDER_RECEIVED_LABEL), "The order confirmation message is not visible."
+        );
+        Assert.assertTrue(
+                WebActionManager.isVisible(BANK_DETAILS_LABEL), "'Our Bank details' section is not visible."
+        );
+        Assert.assertTrue(
+                WebActionManager.isVisible(ORDER_DETAILS_LABEL), "'Order details' section is not visible."
+        );
+        Assert.assertTrue(
+                WebActionManager.isVisible(CUSTOMER_DETAILS_LABEL), "'Customer details' section is not visible."
+        );
+        Assert.assertTrue(
+                WebActionManager.isVisible(BILLING_ADDRESS_LABEL), "'Billing address' section is not visible."
+        );
+
+    }
+
+    public static void checkTaxRateForIndian(int expectedRatePercentage) {
+        String subtotalText = WebActionManager.getText(CHECKOUT_SUBTOTAL_AMOUNT_LABEL);
+        String taxText = WebActionManager.getText(CHECKOUT_TAX_AMOUNT_LABEL);
+        String totalText = WebActionManager.getText(CHECKOUT_TOTAL_AMOUNT_LABEL);
+
+        double subtotal = Double.parseDouble(subtotalText.replace("₹", "").trim());
+        double actualTax = Double.parseDouble(taxText.replace("₹", "").trim());
+        double total = Double.parseDouble(totalText.replace("₹", "").trim());
+
+        double expectedTax = subtotal * (expectedRatePercentage / 100.0);
+        double expectedTotal = subtotal + actualTax;
+
+        Assert.assertEquals(
+                actualTax,
+                expectedTax,
+                0.01,
+                "Tax is not " + expectedRatePercentage + "% of the subtotal. Expected: " + expectedTax + ", but got: " + actualTax
+        );
+
+        Assert.assertEquals(
+                total,
+                expectedTotal,
+                0.01,
+                "Subtotal + Tax does not equal Total. Subtotal: " + subtotal + ", Tax: " + actualTax + ", Total: " + total
         );
     }
 }

@@ -3,8 +3,10 @@ package lippia.web.steps;
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lippia.web.services.CommonService;
+import lippia.web.services.LoginService;
 import lippia.web.services.SuperiorBarNavigationBarService;
 
 public class CommonSteps extends PageSteps {
@@ -27,6 +29,11 @@ public class CommonSteps extends PageSteps {
     @And("the client clicks on the Home menu")
     public void clickOnTheHomeMenu() {
         SuperiorBarNavigationBarService.clickHomeMenu();
+    }
+
+    @Then("the client shouldn't be signed in to his account")
+    public void checkClientShouldntBeSigned() {
+        CommonService.checkClientShouldntBeSigned();
     }
 
 }

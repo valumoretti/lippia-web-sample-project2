@@ -96,8 +96,13 @@ public class HomeSteps extends PageSteps {
         CheckOutService.enterAddress(address);
     }
 
-    @And("^the client enters \"(.*)\" in the State textbox$")
-    public void enterInTheStateCountryTextbox(String state) {
+    @And("^the client enters \"(.*)\" in the city textbox$")
+    public void enterInTheCityTextbox(String city) {
+        CheckOutService.enterCity(city);
+    }
+
+    @And("^the client enters \"(.*)\" in the State section$")
+    public void enterInTheStateCountrySection(String state) {
         CheckOutService.enterState(state);
     }
 
@@ -106,7 +111,7 @@ public class HomeSteps extends PageSteps {
         CheckOutService.enterPostcode(postcode);
     }
 
-    @And("the client selects (.*) in the payment gateway")
+    @And("^the client selects (.*) in the payment gateway$")
     public void selectPaymentInThePaymentGateway(String paymentMethod) {
         CheckOutService.selectPayment(paymentMethod);
     }
@@ -120,4 +125,5 @@ public class HomeSteps extends PageSteps {
     public void checkThatTheOrderHasBeenReceived() {
         CheckOutService.checkOrderReceived();
     }
+
 }

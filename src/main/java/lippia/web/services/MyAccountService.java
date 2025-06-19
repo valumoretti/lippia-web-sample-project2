@@ -31,4 +31,9 @@ public class MyAccountService {
                 "The 'Password Change' section is not visible."
         );
     }
+
+    public static void clickOnLogoutButton() {
+        WebActionManager.click(LOGOUT_BUTTON);
+    }
+
 }

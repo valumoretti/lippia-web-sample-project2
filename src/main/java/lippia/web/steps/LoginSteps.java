@@ -61,8 +61,4 @@ public class LoginSteps extends PageSteps {
         CommonService.pressBackButton();
     }
 
-    @Then("the client shouldn't be signed in to his account")
-    public void checkClientShouldntBeSigned() {
-        LoginService.checkClientShouldntBeSigned();
-    }
 }
