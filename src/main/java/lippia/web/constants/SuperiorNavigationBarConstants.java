@@ -7,7 +7,4 @@ public class SuperiorNavigationBarConstants {
     public static final String HOME_MENU_BUTTON = "xpath://a[@title='Automation Practice Site']";
     public static final String ITEM_LINK = "xpath://a[@title='View your shopping cart']";
 
-
-
-
 }
