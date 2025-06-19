@@ -6,7 +6,6 @@ import lippia.web.constants.LoginConstants;
 import org.testng.Assert;
 
 import static lippia.web.constants.LoginConstants.*;
-import static lippia.web.constants.MyAccountConstants.HELLO_LABEL;
 
 public class LoginService {
 
